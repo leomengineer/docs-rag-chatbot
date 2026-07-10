@@ -1,6 +1,6 @@
 # docs-rag-chatbot
 
-A support chatbot that answers customer questions from your own docs, with cited sources and no hallucinations.
+A support chatbot that answers customer questions from your own docs, with cited sources.
 
 Drop in PDFs and Markdown, ingest once, and ask questions in a chat UI. Every answer lists the source files it used. If nothing relevant is in the knowledge base, the bot says it doesn't know instead of making something up.
 
@@ -66,13 +66,12 @@ Then ask the chat about the new content — answers cite the new filenames.
 
 Embeddings are local (`all-MiniLM-L6-v2`, 384-dim) — no embedding API key required.
 
-## Loom script (60 seconds)
+## Features
 
 1. Ask: *"How much is a porcelain crown without insurance?"* → show cited answer from `05_pricing_cash.md`.
 2. Ask: *"What's your return policy for sneakers?"* → show the "I don't know" refusal (out of scope).
 3. Drop a new PDF into `docs/`, run `make ingest`, ask about that PDF's content → answer cites the new file.
 
-That loop is the whole pitch: grounded answers, visible citations, safe refusal, and a one-command knowledge update.
 
 ## Stack
 
