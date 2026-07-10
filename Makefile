@@ -1,6 +1,6 @@
 DOCS ?= ./docs
 
-.PHONY: up down ingest api ui sync
+.PHONY: up down ingest api ui sync test
 
 sync:
 	uv sync
@@ -19,3 +19,7 @@ api:
 
 ui:
 	uv run streamlit run ui.py
+
+test:
+	uv sync --extra dev
+	uv run pytest
