@@ -52,6 +52,8 @@ Then ask the chat about the new content — answers cite the new filenames.
 
 - `POST /chat` `{"question": "..."}` → `{"answer": "...", "sources": [{"filename", "snippet", "score"}]}`
 - `POST /ingest` `{"folder": "./docs"}` → re-chunk and re-index
+- `GET /documents` → list Markdown/PDF files in the knowledge base
+- `POST /documents/upload` multipart `file` → save into `docs/` and re-index
 - `GET /health`
 
 ## Config (`.env`)
@@ -70,7 +72,7 @@ Embeddings are local (`all-MiniLM-L6-v2`, 384-dim) — no embedding API key requ
 
 1. Ask: *"How much is a porcelain crown without insurance?"* → show cited answer from `05_pricing_cash.md`.
 2. Ask: *"What's your return policy for sneakers?"* → show the "I don't know" refusal (out of scope).
-3. Drop a new PDF into `docs/`, run `make ingest`, ask about that PDF's content → answer cites the new file.
+3. Sidebar: upload a new `.md`/`.pdf` → **Upload & re-index** → ask about it → answer cites the new file.
 
 
 ## Stack

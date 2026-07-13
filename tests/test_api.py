@@ -93,3 +93,51 @@ def test_ingest_empty_folder(mock_ingest):
 
     assert resp.status_code == 200
     assert resp.json() == {"ok": True, "chunks": 0}
+
+
+@patch("rag.api.load_docs")
+def test_list_documents(mock_load):
+    mock_load.return_value = [
+        {
+            "source_filename": "06_insurance_faq.md",
+            "doc_title": "Insurance FAQ",
+            "text": "...",
+        }
+    ]
+
+    resp = client.get("/documents")
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["count"] == 1
+    assert data["docs"][0]["filename"] == "06_insurance_faq.md"
+    assert data["docs"][0]["title"] == "Insurance FAQ"
+
+
+@patch("rag.api.ingest_folder")
+def test_upload_document(mock_ingest, tmp_path):
+    mock_ingest.return_value = 3
+    folder = tmp_path / "docs"
+    folder.mkdir()
+
+    resp = client.post(
+        "/documents/upload",
+        params={"folder": str(folder)},
+        files={"file": ("25_new_policy.md", b"# New Policy\n\nWe accept pets.\n", "text/markdown")},
+    )
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["ok"] is True
+    assert data["filename"] == "25_new_policy.md"
+    assert data["chunks"] == 3
+    assert (folder / "25_new_policy.md").is_file()
+    mock_ingest.assert_called_once_with(str(folder))
+
+
+def test_upload_rejects_bad_type():
+    resp = client.post(
+        "/documents/upload",
+        files={"file": ("notes.txt", b"hello", "text/plain")},
+    )
+    assert resp.status_code == 400
