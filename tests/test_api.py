@@ -41,7 +41,11 @@ def test_chat_returns_answer_and_sources(mock_answer):
 @patch("rag.api.answer")
 def test_chat_refusal(mock_answer):
     mock_answer.return_value = {
-        "answer": "I don't know based on the clinic documents I have.",
+        "answer": (
+            "That isn't covered in the clinic documents I have on file. "
+            "Try rephrasing, or ask about services, pricing, insurance, "
+            "booking, hours, or pre/post-op care — or upload a doc that covers this topic."
+        ),
         "sources": [],
     }
 
@@ -50,7 +54,7 @@ def test_chat_refusal(mock_answer):
     assert resp.status_code == 200
     data = resp.json()
     assert data["sources"] == []
-    assert "don't know" in data["answer"].lower()
+    assert "isn't covered" in data["answer"].lower() or "not covered" in data["answer"].lower()
 
 
 def test_chat_missing_question():

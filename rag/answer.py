@@ -14,14 +14,15 @@ TOP_K = 5
 
 SYSTEM = (
     "Answer only from the provided context. "
-    "If the answer isn't in the context, say you don't know. "
-    "Cite sources by filename."
+    "If the answer isn't clearly in the context, say so plainly — for example: "
+    '"That isn\'t covered in the clinic documents I have on file." '
+    "Do not invent policies or prices. Cite sources by filename when you do answer."
 )
 
 IDK = (
-    "I don't know based on the clinic documents I have. "
+    "That isn't covered in the clinic documents I have on file. "
     "Try rephrasing, or ask about services, pricing, insurance, "
-    "booking, hours, or pre/post-op care."
+    "booking, hours, or pre/post-op care — or upload a doc that covers this topic."
 )
 
 
