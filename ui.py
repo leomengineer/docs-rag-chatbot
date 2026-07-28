@@ -132,7 +132,7 @@ if prompt:
         st.markdown(data["answer"])
         sources = data.get("sources") or []
         if sources:
-            with st.expander("Sources", expanded=True):
+            with st.expander("Sources", expanded=False):
                 for s in sources:
                     st.markdown(f"**{s['filename']}** (score {s['score']})")
                     _render_snippet(s["snippet"])
