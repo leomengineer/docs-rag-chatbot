@@ -74,6 +74,41 @@ Embeddings are local (`all-MiniLM-L6-v2`, 384-dim) — no embedding API key requ
 2. Ask: *"What's your return policy for sneakers?"* → show the "isn't covered in the clinic documents" refusal (out of scope).
 3. Sidebar: upload a new `.md`/`.pdf` → **Upload & re-index** → ask about it → answer cites the new file.
 
+## Retrieval eval
+
+A labeled Q&A set exercises hybrid retrieval without calling an LLM — fast, free, and reproducible.
+
+```bash
+make up && make ingest   # once
+make eval                # prints precision/recall metrics
+```
+
+Golden set: `eval/retrieval_cases.json` — 20 questions (17 in-scope, 3 out-of-scope) with expected source filenames.
+
+**Baseline (k=5, `SIMILARITY_FLOOR=0.35`, BrightSmile sample docs):**
+
+| Metric | Score |
+|--------|-------|
+| Hit@5 (in-scope) | **100%** (17/17) |
+| Recall@5 (in-scope) | **97.1%** |
+| Precision@5 (in-scope) | **34.8%** |
+| MRR (in-scope) | **1.00** |
+| Gate accuracy (all) | **100%** (20/20) |
+
+Hit@5 = at least one expected doc in the top-5 chunks. Recall@5 = fraction of labeled relevant docs retrieved. Precision@5 = relevant docs among unique sources returned (lower is normal when chunks from the right file plus nearby topics appear). MRR = mean reciprocal rank of the first relevant hit. Gate accuracy = similarity floor correctly refuses out-of-scope questions and passes in-scope ones.
+
+CI-style threshold check:
+
+```bash
+uv run python -m eval.run_retrieval --min-hit-rate 0.85
+```
+
+Integration tests (skip automatically if Postgres is down or docs aren't ingested):
+
+```bash
+pytest tests/test_retrieval_eval.py
+```
+
 
 ## Stack
 

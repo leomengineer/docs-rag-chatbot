@@ -1,0 +1,122 @@
+[
+  {
+    "id": "crown_pricing",
+    "question": "How much is a porcelain crown without insurance?",
+    "expected_filenames": ["05_pricing_cash.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "cleaning_pricing",
+    "question": "What does an adult teeth cleaning cost for cash patients?",
+    "expected_filenames": ["05_pricing_cash.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "root_canal_molar",
+    "question": "How much is a root canal on a molar?",
+    "expected_filenames": ["05_pricing_cash.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "emergency_phone",
+    "question": "What number do I call for a dental emergency?",
+    "expected_filenames": ["08_emergency_care.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "knocked_out_tooth",
+    "question": "What should I do if a permanent tooth gets knocked out?",
+    "expected_filenames": ["08_emergency_care.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "office_hours",
+    "question": "What are your office hours on Wednesday?",
+    "expected_filenames": ["02_hours_location.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "clinic_address",
+    "question": "What is the street address on Maple Avenue?",
+    "expected_filenames": ["02_hours_location.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "cancellation_fee",
+    "question": "Is there a fee for canceling an appointment with less than 24 hours notice?",
+    "expected_filenames": ["07_booking_policy.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "new_patient_arrival",
+    "question": "How early should new patients arrive for their first appointment?",
+    "expected_filenames": ["07_booking_policy.md", "20_new_patient_checklist.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "insurance_network",
+    "question": "Do you accept Delta Dental PPO?",
+    "expected_filenames": ["06_insurance_faq.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "medicaid",
+    "question": "Do you accept Medi-Cal dental coverage?",
+    "expected_filenames": ["06_insurance_faq.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "nitrous_oxide",
+    "question": "Do you offer laughing gas for anxious patients?",
+    "expected_filenames": ["24_dental_anxiety.md", "04_cleaning_exam_faq.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "extraction_postop",
+    "question": "After a tooth extraction, how long should I avoid using straws?",
+    "expected_filenames": ["10_postop_extractions.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "whitening_pregnancy",
+    "question": "Is teeth whitening safe during pregnancy?",
+    "expected_filenames": ["15_whitening_policy.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "carecredit",
+    "question": "Do you offer CareCredit financing for large treatment plans?",
+    "expected_filenames": ["19_payment_plans.md", "05_pricing_cash.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "night_guard_pricing",
+    "question": "How much does a custom night guard cost?",
+    "expected_filenames": ["25_night_guards.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "night_guard_timeline",
+    "question": "How long does it take to get a lab-made night guard?",
+    "expected_filenames": ["25_night_guards.md"],
+    "should_refuse": false
+  },
+  {
+    "id": "sneaker_return",
+    "question": "What's your return policy for sneakers?",
+    "expected_filenames": [],
+    "should_refuse": true
+  },
+  {
+    "id": "pizza_delivery",
+    "question": "Can I order a pepperoni pizza from your front desk?",
+    "expected_filenames": [],
+    "should_refuse": true
+  },
+  {
+    "id": "tax_advice",
+    "question": "Can you help me file my federal income taxes?",
+    "expected_filenames": [],
+    "should_refuse": true
+  }
+]

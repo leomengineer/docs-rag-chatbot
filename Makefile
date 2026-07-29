@@ -1,6 +1,6 @@
 DOCS ?= ./docs
 
-.PHONY: up down ingest api ui sync test
+.PHONY: up down ingest api ui sync test eval
 
 sync:
 	uv sync
@@ -23,3 +23,6 @@ ui:
 test:
 	uv sync --extra dev
 	uv run pytest
+
+eval:
+	uv run python -m eval.run_retrieval
